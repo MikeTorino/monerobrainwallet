@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Monero Brainwallet Generator</title>
+		<meta charset="utf-8">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/crc32.js"></script>
+		<script src="js/mnemonic.js"></script>
+		<script src="js/biginteger.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/crypto.js"></script>
+		<script src="js/base58.js"></script>
+		<script src="js/qrcode.js"></script>
+		<script src="js/sha3.js"></script>
+		<script src="js/cn_util.js?2"></script>
+		<script src="js/site.js"></script>
+		<style>
+		body {
+			font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		}
+		.form-style {
+			margin:10px;
+			max-width: 1000px;
+			padding: 20px 12px 10px 20px;
+			
+		}
+		.form-style label {
+			display:block;
+			margin-bottom: 10px;
+		}
+		.form-style label > span{
+			display: inline-block;
+			float: left;
+			width: 150px;
+			font-weight: bold;
+		}
+		.form-style input,
+		.form-style textarea, 
+		.form-style select {
+			border:1px solid #BEBEBE;
+			padding: 7px;
+			margin:0px;
+			outline: none;  
+			width: 810px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+		.form-style input:focus,
+		.form-style textarea:focus, 
+		.form-style select:focus{
+			-moz-box-shadow: 0 0 8px #88D5E9;
+			-webkit-box-shadow: 0 0 8px #88D5E9;
+			box-shadow: 0 0 8px #88D5E9;
+			border: 1px solid #88D5E9;
+		}
+		.form-style .field-textarea{
+			height: 100px;
+		}
+		.form-style input[type=submit]{
+			background: #4B99AD;
+			color: #fff;
+		}
+		.form-style input[type=submit]:hover, .form-style input[type=button]:hover{
+			background: #4691A4;
+			box-shadow:none;
+			-moz-box-shadow:none;
+			-webkit-box-shadow:none;
+		}
+		.explain {
+			margin:10px;
+			max-width: 960px;
+			padding: 20px 12px 10px 20px;	
+		}
+		.vanity {
+			font-size: 10px;
+			color: #999999;
+		}
+		</style>
+
+	</head>
+	 <body> <center>
+		<div id="main-wrapper">
+				<h1>Monero Brainwallet Generator</h1>
+<span id="brainwarning">Warning: Choosing a strong passphrase is important to avoid brute force attempts to guess your passphrase and steal your moneros.</span>
+			<div id="bwGen">
+				<form class="form-style" onsubmit="return bwGen();" method="post">
+				<label for="mnDict">
+				<span>Dictionary:</span>
+					<select id="mnDict">
+						<option value="english">English (Monero default)</option>
+						<option value="electrum">Electrum (Aeon default)</option>
+						<option value="spanish">Spanish</option>
+						<option value="portuguese">Portuguese</option>
+						<option value="japanese">Japanese</option>
+					</select>
+				</label>
+				<label for="pubAddrNetByte"><span>Network Byte: </span>
+					<input type="text" id="pubAddrNetByte" value="12" size="4"/>
+				</label>
+				<label for="bw_input">
+					<span><b>Phrase:</b> </span><input class="mainInput" id="bw_input" rows="2" placeholder="Enter brainwallet phrase." required="true" />
+				</label>
+				<label>
+					<span>&nbsp;</span><input type="submit" value="Generate" />
+				</label>
+				<br>
+				<h3>Wallet:</h3>
+				<label for="bw_mnemonic">
+					<span>Seed: </span><textarea id="bw_mnemonic" rows="2" readonly></textarea>
+				</label>
+				<label for="bw_hexSeed">
+					<span>Hex Seed: </span><input id="bw_hexSeed" readonly/>
+				</label>
+				<label for="bw_privSpend">
+					<span>Private Send Key: </span><input id="bw_privSpend" readonly/>
+				</label>
+				<label for="bw_privView">
+					<span>Private View Key: </span><input id="bw_privView" readonly/>
+				</label>
+				<label for="bw_pubSpend">
+					<span>Public Spend Key: </span><input id="bw_pubSpend" readonly/>
+				</label>
+				<label for="bw_pubView">
+					<span>Public View Key: </span><input id="bw_pubView" readonly/>
+				</label>
+				<label for="bw_pubAddr">
+					<span>Address: </span><input id="bw_pubAddr" readonly/>
+				</label>
+			</form>
+		</div>
+		</div>
+<span class="item"><span id="footerlabeldonations">Donations:</span> 82ggtKbn44sNZ2QtQwCSTZFAzgVFBefJxctYQJQfy8ugPe46w1qzZkmF8xZnA5hXMtPM5PvduUzx4ZqnVZAaxruG54dYyr4</span>
+	</center></body>
+</html>
